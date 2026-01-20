@@ -6,7 +6,15 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-   // Configuração básica do Swagger
+  // Habilitar CORS para permitir requisições do frontend
+  app.enableCors({
+    origin: ['http://localhost:4200'], // URL do frontend Angular
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  });
+
+  // Configuração básica do Swagger
   const config = new DocumentBuilder()
     .setTitle('API Fluxo Certo')
     .setDescription('Sistema de Finanças com NestJS + Prisma')
