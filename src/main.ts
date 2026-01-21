@@ -9,7 +9,7 @@ async function bootstrap() {
   // Habilitar CORS para permitir requisições do frontend
   const allowedOrigins = process.env.CORS_ORIGINS 
     ? process.env.CORS_ORIGINS.split(',')
-    : ['http://localhost:4200'];
+    : ['http://localhost:4200','https://fluxocertoapi-production.up.railway.app'];
   
   app.enableCors({
     origin: allowedOrigins,
