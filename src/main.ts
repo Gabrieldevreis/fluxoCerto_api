@@ -6,20 +6,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Habilitar CORS para permitir requisições do frontend
-  const allowedOrigins = process.env.CORS_ORIGINS 
-    ? process.env.CORS_ORIGINS.split(',')
-    : [
-        'http://localhost:4200',
-        'https://fluxocertofrontend-production.up.railway.app'
-      ];
-  
-  app.enableCors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-  });
+  // Habilitar CORS para todas as origens
+  app.enableCors();
 
   // Configuração básica do Swagger
   const config = new DocumentBuilder()
